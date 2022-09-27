@@ -1,0 +1,38 @@
+type Staff {
+    id: ID!
+    name: String!
+    city: City!
+    position: Position!
+    salaries: [Salary!]!
+}
+
+type City {
+    id: ID!
+    name: String!
+}
+
+type Position {
+    id: ID!
+    name: String!
+    salarySum: Float!
+}
+
+type Salary {
+    date: String!
+    position: Position
+    sum: Float!
+}
+
+type Query {
+    staff(id: ID!): Staff!
+    staffList: [Staff!]!
+}
+
+type Mutation {
+    createSalary(staffId: ID!, positionId: ID!): Salary
+}
+
+type Schema{
+    query: Query
+    mutation: Mutation
+}
